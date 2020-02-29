@@ -1,0 +1,38 @@
+version: "3.7"
+
+services:
+  blog:
+    image: enkito/ondjblog:latest
+    restart: always
+    env_file: .env_file
+    volumes:
+      - /opt/ondjblog/static:/DjangoBlog/collectedstatic
+    depends_on:
+      - data
+    networks:
+      - default
+
+  data:
+    image: mariadb:10.3
+    restart: always
+    env_file: .env_file
+    volumes:
+      - /opt/ondjblog/data:/var/lib/mysql
+      - ./my.cnf:/etc/mysql/mariadb.conf.d/my.cnf
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - default
+
+  nginx:
+    image: nginx:1.16
+    volumes:
+      - /opt/ondjblog/static:/var/www/DjangoBlog/collectedstatic
+      - ./blog.conf:/etc/nginx/conf.d/blog.conf
+    ports:
+      - "80:80"
+    networks:
+      - default
+
+networks:
+   default:
+     driver: bridge
