@@ -4,11 +4,23 @@
 使用docker-compose部署DjangoBlog、mariadb、nginx，免去繁琐的环境配置过程
 
 重要：如果不具备Django migrate的知识，请不要盲目迁移数据，仅建议全新安装使用此方案
-## 首先安装docker和docker-compose
+
+*前提：安装docker和docker-compose*
 - [docker-compose](https://docs.docker.com/compose/install/)
 - [docker](https://docs.docker.com/install/)
 
-## 开始配置`.env_file`:
+## 开始
+
+```text
+git clone https://github.com/kentio/ondjblog.git
+```
+or fork
+```text
+git clone https://github.com/<github username>/ondjblog.git
+```
+
+
+## 配置`.env_file`:
 这个配置包含数据库账号，和Django运行的`SECRET_KEY`; `SECRET_KEY`可以为您的WEB服务提供基本的安全保障， [详见](https://docs.djangoproject.com/en/2.2/ref/settings/#std:setting-SECRET_KEY)
 建议使用随机没有规则的字符, 并且不要使用他人`SECRET_KEY`。
 
