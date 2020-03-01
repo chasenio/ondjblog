@@ -27,6 +27,7 @@ services:
 
   nginx:
     image: nginx:1.16
+    restart: always
     volumes:
       - /opt/ondjblog/static:/var/www/DjangoBlog/collectedstatic
       - ./blog.conf:/etc/nginx/conf.d/blog.conf
