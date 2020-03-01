@@ -1,3 +1,4 @@
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/af55ba73133e475593c72c88e55c3dbd)](https://app.codacy.com/manual/kentio/ondjblog?utm_source=github.com&utm_medium=referral&utm_content=kentio/ondjblog&utm_campaign=Badge_Grade_Dashboard)
 # 使用 docker-compose 部署 [DjangoBlog](https://github.com/liangliangyy/DjangoBlog)[![Build Status](https://travis-ci.com/kentio/ondjblog.svg?branch=master)](https://travis-ci.com/kentio/ondjblog)
 
 感谢[liangliangyy](https://github.com/liangliangyy)一直坚持不懈的更新和维护
