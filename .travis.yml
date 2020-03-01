@@ -18,5 +18,8 @@ script:
   - docker-compose restart blog
   - sleep 5
   - docker-compose ps
+  - docker-compose exec blog ping -c 5 data
+  - docker-compose exec blog ping -c 5 nginx
+  - docker-compose exec blog python manage.py createsuperuser --user=test123 --email=test123@example.com --noinput
   - timeout 60 bash -c 'until $(curl -Isf -o /dev/null http://localhost:5967); do printf '.'; sleep 1; done'
   - timeout 60 bash -c 'until $(curl -Isf -o /dev/null http://localhost); do printf '.'; sleep 1; done'
