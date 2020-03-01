@@ -1,4 +1,4 @@
-# 使用 docker-compose 部署 [DjangoBlog](https://github.com/liangliangyy/DjangoBlog) [![Build Status](https://travis-ci.com/kentio/ondjblog.svg?branch=master)](https://travis-ci.com/kentio/ondjblog)
+# 使用 docker-compose 部署 [DjangoBlog](https://github.com/liangliangyy/DjangoBlog) [![Build Status](https://travis-ci.com/kentio/ondjblog.svg?branch=dev)](https://travis-ci.com/kentio/ondjblog)
 感谢[liangliangyy](https://github.com/liangliangyy)一直坚持不懈的更新和维护
 
 使用docker-compose部署DjangoBlog、mariadb、nginx，免去繁琐的环境配置过程
