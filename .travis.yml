@@ -1,0 +1,19 @@
+language: bash
+services: docker
+
+env:
+  - DOCKER_COMPOSE_VERSION=1.24.1
+
+before_install:
+  - sudo rm /usr/local/bin/docker-compose
+  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+  - chmod +x docker-compose
+  - sudo mv docker-compose /usr/local/bin
+
+script:
+  - sed -ri 's/example.com/localhost/' blog.conf
+  - docker-compose up -d
+  - sleep 10
+  - docker-compose restart blog
+  - sleep 5
+  - timeout 60 bash -c 'until $(curl -  -o /dev/null http://localhost:80); do printf '.'; sleep 0.5; done'

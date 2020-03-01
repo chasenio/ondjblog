@@ -3,9 +3,9 @@
 
 使用docker-compose部署DjangoBlog、mariadb、nginx，免去繁琐的环境配置过程
 
-重要：如果不具备Django migrate的知识，请不要盲目迁移数据，仅建议全新安装使用此方案
+重要：如果不具备Django migrate的知识，请不要盲目迁移数据，仅建议全新安装使用此方案，数据[方法](/docs/Migrate.md)
 
-*前提：安装docker和docker-compose*
+**前提：安装docker和docker-compose**
 - [docker-compose](https://docs.docker.com/compose/install/)
 - [docker](https://docs.docker.com/install/)
 
@@ -22,15 +22,19 @@ git clone https://github.com/<github username>/ondjblog.git
 
 ## 配置`.env_file`:
 这个配置包含数据库账号，和Django运行的`SECRET_KEY`; `SECRET_KEY`可以为您的WEB服务提供基本的安全保障， [详见](https://docs.djangoproject.com/en/2.2/ref/settings/#std:setting-SECRET_KEY)
+
 建议使用随机没有规则的字符, 并且不要使用他人`SECRET_KEY`。
 
 ```text
-MYSQL_ROOT_PASSWORD=<your root password>   # 数据库的root密码
+MYSQL_ROOT_PASSWORD=<your root password>    # 数据库的root密码
 MYSQL_USER=djangoblog
-MYSQL_PASSWORD=<your djangoblog password>  # 此blog使用的数据库账号
-MYSQL_HOST=data							   # 如果你使用自己的数据库请改成数据库地址,否则请不到改
-BLOG_SECRET_KEY=<your djangoblog SECRET_KEY>  # Blog的`SECRET_KEY`
+MYSQL_PASSWORD=<your djangoblog password>    # 此blog使用的数据库账号
+MYSQL_HOST=data    # 如果你使用自己的数据库请改成数据库地址,否则请不到改
+BLOG_SECRET_KEY=<your djangoblog SECRET_KEY>    # Blog的`SECRET_KEY`
+DOMAIN_NAME=<your domain name>    # 您的域名
 ```
+
+如果将来域名发生变更请及时更改`DOMAIN_NAME`，然后`docker-compose up -d`
 
 ## 配置域名
 配置文件是`blog.conf`, 请把文件中的`example.com` 改成您自己的域名。
@@ -62,7 +66,7 @@ django.db.utils.OperationalError: (2003, "Can't connect to MySQL server on 'data
 ```text
 docker-compose restart blog
 ```
-出现下面的日志表示blog服务成功创建数据表， 接下来你就可以访问你的博客了
+出现下面的日志表示Blog服务成功创建数据表， 可以尝试访问你Blog
 ```text
 blog_1   |     - Create model Comment
 blog_1   | Migrations for 'oauth':
@@ -109,7 +113,7 @@ docker exec -it ondjblog_blog_1 python manage.py createsuperuser --user=<your us
 ```
 输入密码后，出现`Superuser created successfully.`用户就成功创建了
 
-你的播客成功搭建了，快去登录吧！
+接下来就可以管理Blog了！
 
 # 其它
 - Blog的所有的数据都在宿主机的`/opt/obdjblog/`，建议定期备份此目录的数据
