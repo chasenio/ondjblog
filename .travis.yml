@@ -20,5 +20,5 @@ script:
   - docker-compose ps
   - docker-compose exec ondjblog_blog_1 ping -c 5 data
   - docker-compose exec ondjblog_blog_1 ping -c 5 nginx
-  - timeout 60 bash -c 'until $(curl -  -o /dev/null http://localhost:5967); do printf '.'; sleep 1; done'
-  - timeout 60 bash -c 'until $(curl -  -o /dev/null http://localhost); do printf '.'; sleep 1; done'
+  - timeout 60 bash -c 'until $(curl -Isf -o /dev/null http://localhost:5967); do printf '.'; sleep 1; done'
+  - timeout 60 bash -c 'until $(curl -Isf -o /dev/null http://localhost); do printf '.'; sleep 1; done'
