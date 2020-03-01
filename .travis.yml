@@ -12,8 +12,13 @@ before_install:
 
 script:
   - sed -ri 's/example.com/localhost/' blog.conf
+  - cat blog.conf
   - docker-compose up -d
   - sleep 10
   - docker-compose restart blog
   - sleep 5
-  - timeout 60 bash -c 'until $(curl -  -o /dev/null http://localhost:80); do printf '.'; sleep 0.5; done'
+  - docker-compose ps
+  - docker-compose exec ondjblog_blog_1 ping -c 5 data
+  - docker-compose exec ondjblog_blog_1 ping -c 5 nginx
+  - timeout 60 bash -c 'until $(curl -  -o /dev/null http://localhost:5967); do printf '.'; sleep 1; done'
+  - timeout 60 bash -c 'until $(curl -  -o /dev/null http://localhost); do printf '.'; sleep 1; done'
