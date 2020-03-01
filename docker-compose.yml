@@ -9,6 +9,8 @@ services:
       - /opt/ondjblog/static:/DjangoBlog/collectedstatic
     depends_on:
       - data
+    ports:
+      - "5967:8000"
     networks:
       - default
 
