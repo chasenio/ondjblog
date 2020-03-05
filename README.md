@@ -1,10 +1,10 @@
-# 使用 docker-compose 部署 [DjangoBlog](https://github.com/liangliangyy/DjangoBlog)[![Build Status](https://travis-ci.com/kentio/ondjblog.svg?branch=master)](https://travis-ci.com/kentio/ondjblog)
+# 使用 docker-compose 部署 [DjangoBlog](https://github.com/liangliangyy/DjangoBlog)  [![Build Status](https://travis-ci.com/kentio/ondjblog.svg?branch=master)](https://travis-ci.com/kentio/ondjblog)
 
 感谢[liangliangyy](https://github.com/liangliangyy)一直坚持不懈的更新和维护
 
 使用docker-compose部署DjangoBlog、mariadb、nginx，免去繁琐的环境配置过程
 
-重要：如果不具备Django migrate的知识，请不要盲目迁移数据，仅建议全新安装使用此方案，数据[方法](/docs/Migrate.md)
+重要：如果不具备Django migrate的知识，请不要盲目迁移数据，仅建议全新安装使用此方案，数据备份[方法](/docs/Migrate.md)
 
 **前提：安装docker和docker-compose**
 - [docker-compose](https://docs.docker.com/compose/install/)
